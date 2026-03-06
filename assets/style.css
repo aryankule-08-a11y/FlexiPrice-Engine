@@ -1,0 +1,477 @@
+/* =====================================================
+   Dynamic Price Optimizer — Custom CSS Theme
+   A premium dark-mode analytics dashboard style
+   ===================================================== */
+
+/* ---------- Global Overrides ---------- */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Hide default Streamlit branding */
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
+
+/* Root variables */
+:root {
+    --bg-primary: #0e1117;
+    --bg-card: #1a1f2e;
+    --bg-card-hover: #232a3e;
+    --accent-blue: #4f8df7;
+    --accent-purple: #a855f7;
+    --accent-teal: #2dd4bf;
+    --accent-orange: #f59e0b;
+    --accent-rose: #f43f5e;
+    --accent-emerald: #10b981;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: rgba(148, 163, 184, 0.12);
+    --glass-bg: rgba(26, 31, 46, 0.65);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Entire app font */
+html,
+body,
+[class*="st-"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Main container */
+.stApp {
+    background: linear-gradient(135deg, #0e1117 0%, #151b28 50%, #0e1117 100%) !important;
+}
+
+/* ---------- Sidebar ---------- */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #111827 0%, #0f172a 100%) !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+section[data-testid="stSidebar"] .stMarkdown h1,
+section[data-testid="stSidebar"] .stMarkdown h2,
+section[data-testid="stSidebar"] .stMarkdown h3 {
+    color: #f1f5f9 !important;
+}
+
+section[data-testid="stSidebar"] .stMarkdown p,
+section[data-testid="stSidebar"] .stMarkdown label {
+    color: #94a3b8 !important;
+}
+
+/* ---------- KPI Metric Cards ---------- */
+div[data-testid="stMetric"] {
+    background: linear-gradient(135deg, var(--glass-bg), rgba(26, 31, 46, 0.4)) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 16px !important;
+    padding: 20px 24px !important;
+    backdrop-filter: blur(12px) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+div[data-testid="stMetric"]:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-lg) !important;
+    border-color: rgba(79, 141, 247, 0.3) !important;
+}
+
+div[data-testid="stMetric"] label {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 1.75rem !important;
+}
+
+div[data-testid="stMetric"] div[data-testid="stMetricDelta"] {
+    font-weight: 600 !important;
+}
+
+/* ---------- Custom Card Container ---------- */
+.css-card {
+    background: linear-gradient(135deg, var(--glass-bg), rgba(26, 31, 46, 0.35));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.css-card:hover {
+    border-color: rgba(79, 141, 247, 0.25);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ---------- Gradient Headers ---------- */
+.gradient-header {
+    background: linear-gradient(135deg, #4f8df7, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.gradient-subheader {
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+}
+
+/* ---------- KPI Card Styling Classes ---------- */
+.kpi-card {
+    background: linear-gradient(135deg, rgba(26, 31, 46, 0.7), rgba(26, 31, 46, 0.35));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px 28px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 16px 16px 0 0;
+}
+
+.kpi-card.blue::before {
+    background: linear-gradient(90deg, #4f8df7, #60a5fa);
+}
+
+.kpi-card.purple::before {
+    background: linear-gradient(90deg, #a855f7, #c084fc);
+}
+
+.kpi-card.teal::before {
+    background: linear-gradient(90deg, #2dd4bf, #5eead4);
+}
+
+.kpi-card.orange::before {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.kpi-card.rose::before {
+    background: linear-gradient(90deg, #f43f5e, #fb7185);
+}
+
+.kpi-card.emerald::before {
+    background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.kpi-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.kpi-card .kpi-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.kpi-card .kpi-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 4px 0;
+}
+
+.kpi-card .kpi-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.kpi-card .kpi-delta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+.kpi-card .kpi-delta.positive {
+    color: #10b981;
+}
+
+.kpi-card .kpi-delta.negative {
+    color: #f43f5e;
+}
+
+/* ---------- Section Divider ---------- */
+.section-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.2), transparent);
+    margin: 2rem 0;
+}
+
+/* ---------- Feature Badge ---------- */
+.feature-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 4px 4px;
+}
+
+.badge-blue {
+    background: rgba(79, 141, 247, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(79, 141, 247, 0.25);
+}
+
+.badge-purple {
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.badge-teal {
+    background: rgba(45, 212, 191, 0.15);
+    color: #5eead4;
+    border: 1px solid rgba(45, 212, 191, 0.15);
+}
+
+.badge-orange {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+/* ---------- Tabs ---------- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background: rgba(26, 31, 46, 0.4);
+    border-radius: 12px;
+    padding: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: 8px !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    padding: 10px 20px !important;
+    transition: all 0.25s ease !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #4f8df7, #a855f7) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* ---------- Buttons ---------- */
+.stButton>button {
+    background: linear-gradient(135deg, #4f8df7, #6366f1) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 10px 28px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(79, 141, 247, 0.3) !important;
+}
+
+.stButton>button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(79, 141, 247, 0.45) !important;
+}
+
+/* Download button */
+.stDownloadButton>button {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 10px 28px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+}
+
+.stDownloadButton>button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45) !important;
+}
+
+/* ---------- Select / Slider ---------- */
+.stSelectbox>div>div {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    color: var(--text-primary) !important;
+}
+
+.stSlider>div>div>div {
+    color: var(--accent-blue) !important;
+}
+
+/* ---------- DataFrame / Table ---------- */
+.stDataFrame {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* ---------- Expander ---------- */
+.streamlit-expanderHeader {
+    background: var(--bg-card) !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* ---------- Price Display ---------- */
+.price-display {
+    font-size: 3.2rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 20px;
+    border-radius: 16px;
+    margin: 16px 0;
+}
+
+.price-up {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.04));
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: #10b981;
+}
+
+.price-down {
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(244, 63, 94, 0.04));
+    border: 1px solid rgba(244, 63, 94, 0.25);
+    color: #f43f5e;
+}
+
+.price-neutral {
+    background: linear-gradient(135deg, rgba(79, 141, 247, 0.12), rgba(79, 141, 247, 0.04));
+    border: 1px solid rgba(79, 141, 247, 0.25);
+    color: #4f8df7;
+}
+
+/* ---------- Info Box ---------- */
+.info-box {
+    background: rgba(79, 141, 247, 0.08);
+    border-left: 4px solid #4f8df7;
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin: 12px 0;
+    color: #94a3b8;
+}
+
+.info-box strong {
+    color: #f1f5f9;
+}
+
+/* ---------- Insight Card ---------- */
+.insight-card {
+    background: linear-gradient(135deg, rgba(26, 31, 46, 0.7), rgba(26, 31, 46, 0.3));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+    border-color: rgba(168, 85, 247, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.insight-card .insight-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.insight-card .insight-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 8px;
+}
+
+.insight-card .insight-text {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* ---------- Pulse animation for live indicator ---------- */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.15);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.live-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #10b981;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.25);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.4);
+}
