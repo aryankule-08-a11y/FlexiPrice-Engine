@@ -17,20 +17,22 @@ from typing import Union
 # ── Formatting Helpers ──────────────────────────────────────────────
 
 def fmt_currency(value: float) -> str:
-    """Return a nicely formatted USD string."""
+    """Return a compact USD string that fits KPI cards."""
     if abs(value) >= 1_000_000:
-        return f"${value / 1_000_000:,.2f}M"
+        return f"${value / 1_000_000:.1f}M"
+    if abs(value) >= 10_000:
+        return f"${value / 1_000:.0f}K"
     if abs(value) >= 1_000:
-        return f"${value / 1_000:,.1f}K"
-    return f"${value:,.2f}"
+        return f"${value / 1_000:.1f}K"
+    return f"${value:.2f}"
 
 
 def fmt_number(value: float) -> str:
     """Format a large number with K/M suffixes."""
     if abs(value) >= 1_000_000:
-        return f"{value / 1_000_000:,.1f}M"
+        return f"{value / 1_000_000:.1f}M"
     if abs(value) >= 1_000:
-        return f"{value / 1_000:,.1f}K"
+        return f"{value / 1_000:.1f}K"
     return f"{value:,.0f}"
 
 

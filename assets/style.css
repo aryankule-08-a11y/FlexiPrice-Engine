@@ -1,14 +1,12 @@
 /* =====================================================
-   Dynamic Price Optimizer — Custom CSS Theme
-   A premium dark-mode analytics dashboard style
+   FlexiPrice Engine — PREMIUM CSS THEME v3.0
+   A unique, high-end analytics dashboard design
    ===================================================== */
 
-/* ---------- Global Overrides ---------- */
+/* ── Google Font ────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-/* Hide default Streamlit branding */
+/* ── Hide Streamlit defaults ───────────────────────── */
 #MainMenu {
     visibility: hidden;
 }
@@ -21,199 +19,276 @@ header {
     visibility: hidden;
 }
 
-/* Root variables */
+/* ── CSS Variables ─────────────────────────────────── */
 :root {
-    --bg-primary: #0e1117;
-    --bg-card: #1a1f2e;
-    --bg-card-hover: #232a3e;
-    --accent-blue: #4f8df7;
-    --accent-purple: #a855f7;
-    --accent-teal: #2dd4bf;
-    --accent-orange: #f59e0b;
-    --accent-rose: #f43f5e;
-    --accent-emerald: #10b981;
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --border-color: rgba(148, 163, 184, 0.12);
-    --glass-bg: rgba(26, 31, 46, 0.65);
-    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.35);
+    --bg-deep: #06080f;
+    --bg-surface: #0c1022;
+    --bg-card: #111730;
+    --bg-card-alt: #151d3a;
+    --bg-elevated: #1a2347;
+    --accent-1: #00d4ff;
+    /* Cyan neon */
+    --accent-2: #7c3aed;
+    /* Vivid purple */
+    --accent-3: #10b981;
+    /* Emerald */
+    --accent-4: #f59e0b;
+    /* Amber */
+    --accent-5: #ef4444;
+    /* Red */
+    --accent-6: #ec4899;
+    /* Pink */
+    --accent-gradient: linear-gradient(135deg, #00d4ff, #7c3aed);
+    --accent-gradient-2: linear-gradient(135deg, #7c3aed, #ec4899);
+    --accent-gradient-3: linear-gradient(135deg, #10b981, #00d4ff);
+    --text-primary: #edf2f7;
+    --text-secondary: #8394b0;
+    --text-muted: #5a6a85;
+    --border-subtle: rgba(0, 212, 255, 0.08);
+    --border-glow: rgba(0, 212, 255, 0.2);
+    --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.15);
+    --glow-purple: 0 0 20px rgba(124, 58, 237, 0.15);
+    --glass: rgba(17, 23, 48, 0.65);
+    --glass-border: rgba(0, 212, 255, 0.1);
 }
 
-/* Entire app font */
+/* ── Global Typography ─────────────────────────────── */
 html,
 body,
 [class*="st-"] {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Main container */
+/* ── App Background with Mesh Gradient ────────────── */
 .stApp {
-    background: linear-gradient(135deg, #0e1117 0%, #151b28 50%, #0e1117 100%) !important;
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 85%, rgba(124, 58, 237, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 60%),
+        linear-gradient(180deg, #06080f 0%, #0a0e1a 50%, #06080f 100%) !important;
 }
 
-/* ---------- Sidebar ---------- */
+/* ── Sidebar ───────────────────────────────────────── */
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #111827 0%, #0f172a 100%) !important;
-    border-right: 1px solid var(--border-color) !important;
+    background: linear-gradient(180deg, #080c1a 0%, #0a0f20 40%, #060a16 100%) !important;
+    border-right: 1px solid var(--border-subtle) !important;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4) !important;
 }
 
 section[data-testid="stSidebar"] .stMarkdown h1,
 section[data-testid="stSidebar"] .stMarkdown h2,
 section[data-testid="stSidebar"] .stMarkdown h3 {
-    color: #f1f5f9 !important;
+    color: var(--text-primary) !important;
 }
 
 section[data-testid="stSidebar"] .stMarkdown p,
 section[data-testid="stSidebar"] .stMarkdown label {
-    color: #94a3b8 !important;
+    color: var(--text-secondary) !important;
 }
 
-/* ---------- KPI Metric Cards ---------- */
+/* Sidebar radio buttons — pill style */
+section[data-testid="stSidebar"] div[role="radiogroup"] label {
+    border-radius: 10px !important;
+    padding: 8px 14px !important;
+    margin: 2px 0 !important;
+    transition: all 0.3s ease !important;
+}
+
+section[data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"],
+section[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(124, 58, 237, 0.12)) !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+}
+
+/* ── Streamlit Metric Cards (Built-in) ─────────────── */
 div[data-testid="stMetric"] {
-    background: linear-gradient(135deg, var(--glass-bg), rgba(26, 31, 46, 0.4)) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 16px !important;
-    padding: 20px 24px !important;
-    backdrop-filter: blur(12px) !important;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-card-alt) 100%) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 14px !important;
+    padding: 18px 22px !important;
+    backdrop-filter: blur(16px) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
 div[data-testid="stMetric"]:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: var(--shadow-lg) !important;
-    border-color: rgba(79, 141, 247, 0.3) !important;
+    transform: translateY(-3px) !important;
+    border-color: var(--border-glow) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), var(--glow-cyan) !important;
 }
 
 div[data-testid="stMetric"] label {
-    color: var(--text-secondary) !important;
-    font-weight: 500 !important;
-    font-size: 0.85rem !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    font-size: 0.72rem !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.1em !important;
 }
 
 div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
     color: var(--text-primary) !important;
     font-weight: 700 !important;
-    font-size: 1.75rem !important;
+    font-size: 1.6rem !important;
+    font-family: 'JetBrains Mono', monospace !important;
 }
 
-div[data-testid="stMetric"] div[data-testid="stMetricDelta"] {
-    font-weight: 600 !important;
-}
-
-/* ---------- Custom Card Container ---------- */
-.css-card {
-    background: linear-gradient(135deg, var(--glass-bg), rgba(26, 31, 46, 0.35));
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 28px;
-    margin-bottom: 20px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-.css-card:hover {
-    border-color: rgba(79, 141, 247, 0.25);
-    box-shadow: var(--shadow-lg);
-}
-
-/* ---------- Gradient Headers ---------- */
-.gradient-header {
-    background: linear-gradient(135deg, #4f8df7, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 800;
-    font-size: 2.4rem;
-    margin-bottom: 0.5rem;
-}
-
-.gradient-subheader {
-    color: var(--text-secondary);
-    font-weight: 400;
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
-}
-
-/* ---------- KPI Card Styling Classes ---------- */
+/* ── Custom KPI Cards (HTML) ───────────────────────── */
 .kpi-card {
-    background: linear-gradient(135deg, rgba(26, 31, 46, 0.7), rgba(26, 31, 46, 0.35));
-    border: 1px solid var(--border-color);
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-card-alt) 100%);
+    border: 1px solid var(--border-subtle);
     border-radius: 16px;
-    padding: 24px 28px;
+    padding: 22px 16px;
     text-align: center;
-    backdrop-filter: blur(12px);
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(16px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
+/* Glow bar on top */
 .kpi-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 2px;
     border-radius: 16px 16px 0 0;
 }
 
-.kpi-card.blue::before {
-    background: linear-gradient(90deg, #4f8df7, #60a5fa);
+/* Corner glow dot */
+.kpi-card::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--border-glow);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), var(--glow-cyan);
+}
+
+.kpi-card:hover::after {
+    opacity: 1;
+}
+
+/* Color variants for top bar + corner glow */
+.kpi-card.cyan::before {
+    background: linear-gradient(90deg, #00d4ff, #06b6d4);
+}
+
+.kpi-card.cyan::after {
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.15), transparent 70%);
 }
 
 .kpi-card.purple::before {
-    background: linear-gradient(90deg, #a855f7, #c084fc);
+    background: linear-gradient(90deg, #7c3aed, #a78bfa);
 }
 
-.kpi-card.teal::before {
-    background: linear-gradient(90deg, #2dd4bf, #5eead4);
-}
-
-.kpi-card.orange::before {
-    background: linear-gradient(90deg, #f59e0b, #fbbf24);
-}
-
-.kpi-card.rose::before {
-    background: linear-gradient(90deg, #f43f5e, #fb7185);
+.kpi-card.purple::after {
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
 }
 
 .kpi-card.emerald::before {
     background: linear-gradient(90deg, #10b981, #34d399);
 }
 
-.kpi-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+.kpi-card.emerald::after {
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent 70%);
+}
+
+.kpi-card.amber::before {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.kpi-card.amber::after {
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.15), transparent 70%);
+}
+
+.kpi-card.rose::before {
+    background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+.kpi-card.rose::after {
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.15), transparent 70%);
+}
+
+.kpi-card.pink::before {
+    background: linear-gradient(90deg, #ec4899, #f472b6);
+}
+
+.kpi-card.pink::after {
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.15), transparent 70%);
+}
+
+/* Backwards compat: old color names map to new */
+.kpi-card.blue {
+    /* alias for cyan */
+}
+
+.kpi-card.blue::before {
+    background: linear-gradient(90deg, #00d4ff, #06b6d4);
+}
+
+.kpi-card.blue::after {
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.15), transparent 70%);
+}
+
+.kpi-card.teal::before {
+    background: linear-gradient(90deg, #2dd4bf, #5eead4);
+}
+
+.kpi-card.teal::after {
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.15), transparent 70%);
+}
+
+.kpi-card.orange::before {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.kpi-card.orange::after {
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.15), transparent 70%);
 }
 
 .kpi-card .kpi-icon {
-    font-size: 2rem;
-    margin-bottom: 8px;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.3));
 }
 
 .kpi-card .kpi-value {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #f1f5f9;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #edf2f7;
+    font-family: 'JetBrains Mono', monospace;
     margin: 4px 0;
+    white-space: nowrap;
 }
 
 .kpi-card .kpi-label {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: #94a3b8;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #5a6a85;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
 }
 
 .kpi-card .kpi-delta {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .kpi-card .kpi-delta.positive {
@@ -221,95 +296,175 @@ div[data-testid="stMetric"] div[data-testid="stMetricDelta"] {
 }
 
 .kpi-card .kpi-delta.negative {
-    color: #f43f5e;
+    color: #ef4444;
 }
 
-/* ---------- Section Divider ---------- */
+/* ── Gradient Headers ──────────────────────────────── */
+.gradient-header {
+    background: linear-gradient(135deg, #00d4ff, #7c3aed, #ec4899);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+    animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-subheader {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.95rem;
+    margin-bottom: 1.6rem;
+}
+
+/* ── Glass Card ────────────────────────────────────── */
+.glass-card {
+    background: linear-gradient(145deg, rgba(17, 23, 48, 0.75), rgba(17, 23, 48, 0.35));
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: all 0.35s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(0, 212, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), var(--glow-cyan);
+}
+
+/* Backward compat alias */
+.css-card {}
+
+.css-card {
+    background: linear-gradient(145deg, rgba(17, 23, 48, 0.75), rgba(17, 23, 48, 0.35));
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: all 0.35s ease;
+}
+
+.css-card:hover {
+    border-color: rgba(0, 212, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), var(--glow-cyan);
+}
+
+/* ── Section Divider ───────────────────────────────── */
 .section-divider {
     border: none;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.15), rgba(124, 58, 237, 0.15), transparent);
     margin: 2rem 0;
 }
 
-/* ---------- Feature Badge ---------- */
+/* ── Feature Badges ────────────────────────────────── */
 .feature-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 14px;
+    border-radius: 24px;
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     margin: 4px 4px;
+    transition: all 0.3s ease;
+}
+
+.feature-badge:hover {
+    transform: translateY(-2px);
 }
 
 .badge-blue {
-    background: rgba(79, 141, 247, 0.15);
-    color: #60a5fa;
-    border: 1px solid rgba(79, 141, 247, 0.25);
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    border: 1px solid rgba(0, 212, 255, 0.2);
 }
 
 .badge-purple {
-    background: rgba(168, 85, 247, 0.15);
-    color: #c084fc;
-    border: 1px solid rgba(168, 85, 247, 0.25);
+    background: rgba(124, 58, 237, 0.1);
+    color: #a78bfa;
+    border: 1px solid rgba(124, 58, 237, 0.2);
 }
 
 .badge-teal {
-    background: rgba(45, 212, 191, 0.15);
-    color: #5eead4;
-    border: 1px solid rgba(45, 212, 191, 0.15);
+    background: rgba(16, 185, 129, 0.1);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .badge-orange {
-    background: rgba(245, 158, 11, 0.15);
+    background: rgba(245, 158, 11, 0.1);
     color: #fbbf24;
-    border: 1px solid rgba(245, 158, 11, 0.25);
+    border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
-/* ---------- Tabs ---------- */
+/* ── Tabs ──────────────────────────────────────────── */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 8px;
-    background: rgba(26, 31, 46, 0.4);
-    border-radius: 12px;
-    padding: 6px;
-    border: 1px solid var(--border-color);
+    gap: 4px;
+    background: rgba(12, 16, 34, 0.6);
+    border-radius: 14px;
+    padding: 5px;
+    border: 1px solid var(--border-subtle);
 }
 
 .stTabs [data-baseweb="tab"] {
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     color: var(--text-secondary) !important;
     font-weight: 500 !important;
-    padding: 10px 20px !important;
-    transition: all 0.25s ease !important;
+    padding: 10px 18px !important;
+    font-size: 0.85rem !important;
+    transition: all 0.3s ease !important;
 }
 
 .stTabs [aria-selected="true"] {
-    background: linear-gradient(135deg, #4f8df7, #a855f7) !important;
+    background: var(--accent-gradient) !important;
     color: #ffffff !important;
     font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.25) !important;
 }
 
-/* ---------- Buttons ---------- */
+/* ── Buttons ───────────────────────────────────────── */
 .stButton>button {
-    background: linear-gradient(135deg, #4f8df7, #6366f1) !important;
+    background: var(--accent-gradient) !important;
     color: #ffffff !important;
     border: none !important;
     border-radius: 12px !important;
     padding: 10px 28px !important;
     font-weight: 600 !important;
-    font-size: 0.9rem !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 4px 15px rgba(79, 141, 247, 0.3) !important;
+    font-size: 0.88rem !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    transition: all 0.35s ease !important;
+    box-shadow: 0 4px 18px rgba(0, 212, 255, 0.25) !important;
+    letter-spacing: 0.02em !important;
 }
 
 .stButton>button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(79, 141, 247, 0.45) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.4) !important;
 }
 
-/* Download button */
 .stDownloadButton>button {
     background: linear-gradient(135deg, #10b981, #059669) !important;
     color: #ffffff !important;
@@ -317,150 +472,292 @@ div[data-testid="stMetric"] div[data-testid="stMetricDelta"] {
     border-radius: 12px !important;
     padding: 10px 28px !important;
     font-weight: 600 !important;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    box-shadow: 0 4px 18px rgba(16, 185, 129, 0.25) !important;
+    transition: all 0.35s ease !important;
 }
 
 .stDownloadButton>button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4) !important;
 }
 
-/* ---------- Select / Slider ---------- */
-.stSelectbox>div>div {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 10px !important;
-    color: var(--text-primary) !important;
-}
-
-.stSlider>div>div>div {
-    color: var(--accent-blue) !important;
-}
-
-/* ---------- DataFrame / Table ---------- */
+/* ── DataFrame / Table ─────────────────────────────── */
 .stDataFrame {
-    border-radius: 12px !important;
+    border-radius: 14px !important;
     overflow: hidden !important;
-    border: 1px solid var(--border-color) !important;
+    border: 1px solid var(--border-subtle) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* ---------- Expander ---------- */
+/* ── Expander ──────────────────────────────────────── */
 .streamlit-expanderHeader {
     background: var(--bg-card) !important;
-    border-radius: 12px !important;
-    border: 1px solid var(--border-color) !important;
+    border-radius: 14px !important;
+    border: 1px solid var(--border-subtle) !important;
     color: var(--text-primary) !important;
     font-weight: 600 !important;
+    font-size: 0.92rem !important;
 }
 
-/* ---------- Price Display ---------- */
+div[data-testid="stExpander"] {
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    margin-bottom: 16px !important;
+    background: var(--bg-card) !important;
+}
+
+/* ── Select / Slider ───────────────────────────────── */
+.stSelectbox label,
+.stSlider label,
+.stNumberInput label {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+}
+
+/* ── Price Display ─────────────────────────────────── */
 .price-display {
-    font-size: 3.2rem;
-    font-weight: 800;
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
     text-align: center;
-    padding: 20px;
-    border-radius: 16px;
-    margin: 16px 0;
+    padding: 24px;
+    border-radius: 20px;
+    margin: 18px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.price-display::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    opacity: 0.05;
 }
 
 .price-up {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.04));
-    border: 1px solid rgba(16, 185, 129, 0.25);
+    background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.02));
+    border: 1px solid rgba(16, 185, 129, 0.2);
     color: #10b981;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+}
+
+.price-up::before {
+    background: radial-gradient(circle, #10b981, transparent);
 }
 
 .price-down {
-    background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(244, 63, 94, 0.04));
-    border: 1px solid rgba(244, 63, 94, 0.25);
-    color: #f43f5e;
+    background: linear-gradient(145deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.02));
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.1);
+}
+
+.price-down::before {
+    background: radial-gradient(circle, #ef4444, transparent);
 }
 
 .price-neutral {
-    background: linear-gradient(135deg, rgba(79, 141, 247, 0.12), rgba(79, 141, 247, 0.04));
-    border: 1px solid rgba(79, 141, 247, 0.25);
-    color: #4f8df7;
+    background: linear-gradient(145deg, rgba(0, 212, 255, 0.1), rgba(0, 212, 255, 0.02));
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    color: #00d4ff;
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
 }
 
-/* ---------- Info Box ---------- */
+.price-neutral::before {
+    background: radial-gradient(circle, #00d4ff, transparent);
+}
+
+/* ── Info Box ──────────────────────────────────────── */
 .info-box {
-    background: rgba(79, 141, 247, 0.08);
-    border-left: 4px solid #4f8df7;
-    border-radius: 0 12px 12px 0;
-    padding: 16px 20px;
-    margin: 12px 0;
-    color: #94a3b8;
+    background: linear-gradient(145deg, rgba(0, 212, 255, 0.06), rgba(0, 212, 255, 0.02));
+    border-left: 3px solid #00d4ff;
+    border-radius: 0 14px 14px 0;
+    padding: 18px 22px;
+    margin: 14px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
 }
 
 .info-box strong {
-    color: #f1f5f9;
+    color: var(--text-primary);
 }
 
-/* ---------- Insight Card ---------- */
+/* ── Insight Card ──────────────────────────────────── */
 .insight-card {
-    background: linear-gradient(135deg, rgba(26, 31, 46, 0.7), rgba(26, 31, 46, 0.3));
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
+    background: linear-gradient(145deg, var(--bg-card), var(--bg-card-alt));
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
     padding: 24px;
-    margin-bottom: 16px;
-    transition: all 0.3s ease;
+    margin-bottom: 14px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.insight-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.08), transparent 70%);
+    transition: opacity 0.3s;
+    opacity: 0;
 }
 
 .insight-card:hover {
-    border-color: rgba(168, 85, 247, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border-color: rgba(124, 58, 237, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), var(--glow-purple);
+}
+
+.insight-card:hover::after {
+    opacity: 1;
 }
 
 .insight-card .insight-icon {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
 }
 
 .insight-card .insight-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: #f1f5f9;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 
 .insight-card .insight-text {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
 }
 
-/* ---------- Pulse animation for live indicator ---------- */
+/* ── Pipeline Step Card ────────────────────────────── */
+.pipeline-step {
+    background: linear-gradient(145deg, var(--bg-card), var(--bg-card-alt));
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 22px 18px;
+    text-align: center;
+    min-width: 130px;
+    transition: all 0.35s ease;
+}
+
+.pipeline-step:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-glow);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), var(--glow-cyan);
+}
+
+.pipeline-step .step-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.pipeline-step .step-title {
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-bottom: 3px;
+}
+
+.pipeline-step .step-sub {
+    color: var(--text-muted);
+    font-size: 0.68rem;
+}
+
+.pipeline-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    align-self: center;
+    opacity: 0.4;
+}
+
+/* ── Stats Grid ────────────────────────────────────── */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.05);
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-row .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.stat-row .stat-value {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+}
+
+/* ── Pulse animation ───────────────────────────────── */
 @keyframes pulse {
     0% {
         opacity: 1;
-        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4);
     }
 
-    50% {
-        opacity: 0.6;
-        transform: scale(1.15);
+    70% {
+        opacity: 0.7;
+        box-shadow: 0 0 0 8px rgba(0, 212, 255, 0);
     }
 
     100% {
         opacity: 1;
-        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
     }
 }
 
 .live-dot {
     display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: #10b981;
+    width: 8px;
+    height: 8px;
+    background: #00d4ff;
     border-radius: 50%;
     margin-right: 8px;
-    animation: pulse 1.5s ease-in-out infinite;
+    animation: pulse 2s ease-in-out infinite;
 }
 
-/* ---------- Scrollbar ---------- */
+/* ── Fade In animation ─────────────────────────────── */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -468,10 +765,10 @@ div[data-testid="stMetric"] div[data-testid="stMetricDelta"] {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.25);
+    background: rgba(0, 212, 255, 0.15);
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(148, 163, 184, 0.4);
+    background: rgba(0, 212, 255, 0.3);
 }
